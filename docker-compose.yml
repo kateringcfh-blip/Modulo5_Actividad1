@@ -1,0 +1,17 @@
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: modulo5-api-gateway:latest
+    container_name: modulo5-api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: "8080"
+      # Se pueden sobrescribir los valores de appsettings.json, por ejemplo:
+      # Auth__Usuario: admin
+      # Auth__Password: Gateway2026!
+      # Jwt__Key: <clave de al menos 32 caracteres>
+    restart: unless-stopped
